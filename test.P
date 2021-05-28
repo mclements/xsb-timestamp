@@ -1,0 +1,24 @@
+:- import localdatetime/1, to_timestamp/3, from_date/2, timestamps_age/3, from_timestamp/3, to_date/2,
+   to_days/2 from timestamp.
+
+test :-
+      TS is 0, to_date(TS, Date),
+      writeln('OriginDate'=Date), fail.
+
+test :-
+      to_timestamp('1970-01-01','%Y-%m-%d', TS), localdatetime(Now), timestamps_age(Now, TS, Age),
+      writeln('AgeFromOrigin'=Age), fail.
+
+test :-
+      localdatetime(Now), from_timestamp(Now, '%Y-%m-%d %H:%M:%S', DateTime),
+      writeln('DateTimeNow'=DateTime), fail.
+
+test:-
+     localdatetime(Now), to_date(Now, Date),
+     writeln('DateNow'=Date), fail.
+
+test :-
+      localdatetime(Now), to_days(Now, Days),
+      writeln('DaysFromOrigin'=Days), fail.
+
+test.

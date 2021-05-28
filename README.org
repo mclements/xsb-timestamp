@@ -1,0 +1,78 @@
+#+title: C timestamp functions for XSB
+#+author: Mark Clements
+
+#+options: toc:nil html-postamble:nil num:nil
+
+* Introduction
+
+XSB is a capable Prolog/Datalog implementation which allows for easy integration with C functions. This package defines a set of functions for using some of the C date-time functions in XSB.
+
+As a simple example, we have the following [[file:test.P][test.P]] file:
+
+#+BEGIN_SRC shell :exports results :results verbatim
+  cat test.P
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+[timestamp].
+
+:- import localdatetime/1, to_timestamp/3, from_date/2, timestamps_age/3, from_timestamp/3, to_date/2,
+   to_days/2 from timestamp.
+
+test :-
+      TS is 0, to_date(TS, Date),
+      writeln('OriginDate'=Date), fail.
+
+test :-
+      to_timestamp('1970-01-01','%Y-%m-%d', TS), localdatetime(Now), timestamps_age(Now, TS, Age),
+      writeln('AgeFromOrigin'=Age), fail.
+
+test :-
+      localdatetime(Now), from_timestamp(Now, '%Y-%m-%d %H:%M:%S', DateTime),
+      writeln('DateTimeNow'=DateTime), fail.
+
+test:-
+     localdatetime(Now), to_date(Now, Date),
+     writeln('DateNow'=Date), fail.
+
+test :-
+      localdatetime(Now), to_days(Now, Days),
+      writeln('DaysFromOrigin'=Days), fail.
+
+test.
+#+end_example
+
+We can run this using:
+
+#+BEGIN_example
+  [timestamp].
+  [test].
+  test.
+#+END_example
+
+This loads the timestamp and test modules, and tests the timestamp predicates. The output is:
+
+#+begin_example
+| ?- [timestamp].
+[timestamp loaded]
+
+yes
+| ?- [test].
+[test loaded, cpu time used: 0.001 seconds]
+
+yes
+| ?- test.
+OriginDate = 1970-01-01
+AgeFromOrigin = 51
+DateTimeNow = 2021-05-28 11:15:32
+DateNow = 2021-05-28
+DaysFromOrigin = 18775
+
+yes
+#+end_example
+
+
+Documentation is available in the [[file:timestamp.c][timestamp.c]] file.
+
+
