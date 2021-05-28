@@ -7,7 +7,7 @@
 
 XSB is a capable Prolog/Datalog implementation which allows for easy integration with C functions. This package defines a set of functions for using some of the C date-time functions in XSB.
 
-As a simple example, we have the following [[file:test.P][test.P]] file:
+As a simple example, we have the following [[https://github.com/mclements/xsb-timestamp/blob/main/test.P][test.P]] file:
 
 #+BEGIN_SRC shell :exports results :results verbatim
   cat test.P
@@ -73,6 +73,4 @@ yes
 #+end_example
 
 
-Documentation is available in the [[file:timestamp.c][timestamp.c]] file.
-
-
+Documentation is available in the [[https://github.com/mclements/xsb-timestamp/blob/main/timestamp.c][timestamp.c]] file.
