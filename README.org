@@ -15,8 +15,6 @@ As a simple example, we have the following [[https://github.com/mclements/xsb-ti
 
 #+RESULTS:
 #+begin_example
-[timestamp].
-
 :- import localdatetime/1, to_timestamp/3, from_date/2, timestamps_age/3, from_timestamp/3, to_date/2,
    to_days/2 from timestamp.
 
