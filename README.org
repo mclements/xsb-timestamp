@@ -7,7 +7,7 @@
 
 XSB is a capable Prolog/Datalog implementation which allows for easy integration with C functions. This package defines a set of functions for using some of the C date-time functions in XSB.
 
-To use the =timestamp= module, put the =timestamp.c= and =timestamp.H= files into the current working directory or into one of the directories defined by =library_directory(Dir)= (see section 3.6 of the XSM Manual 1).
+To use the =timestamp= module, put the =timestamp.c= and =timestamp.H= files into the current working directory or into one of the directories defined by =library_directory(Dir)= [[http://xsb.sourceforge.net/manual1/manual1.pdf#section.3.6][(see section 3.6 of the XSM Manual 1)]].
 
 As a simple example, we have the following [[https://github.com/mclements/xsb-timestamp/blob/main/test_timestamp.P][test_timestamp.P]] file:
 
@@ -45,7 +45,7 @@ test :-
 
 We can run this using:
 
-#+BEGIN_SRC bash :exports both :results output
+#+BEGIN_SRC shell :exports both :results output
   xsb timestamp
   xsb test_timestamp
 #+END_SRC
@@ -53,8 +53,15 @@ We can run this using:
 #+RESULTS:
 : OriginDate = 1970-01-01
 : AgeFromOrigin = 51
-: DateTimeNow = 2021-07-21 11:03:30
+: DateTimeNow = 2021-07-21 11:57:09
 : DateNow = 2021-07-21
 : DaysFromOrigin = 18829
+
+Alternatively, we could run this within an XSB session using:
+
+#+begin_example
+[timestamp].
+[test_timestamp].
+#+end_example
 
 Documentation is available in the [[https://github.com/mclements/xsb-timestamp/blob/main/timestamp.c][timestamp.c]] file.
