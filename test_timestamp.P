@@ -21,4 +21,4 @@ test :-
       localdatetime(Now), to_days(Now, Days),
       writeln('DaysFromOrigin'=Days), fail.
 
-test.
+?- test; true.
